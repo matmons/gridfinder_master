@@ -1,0 +1,41 @@
+inputs:
+  admin: admin_boundaries/europe_trimmed.gpkg  # admin boundaries
+  admin_code: adm0_a3
+  ntl_monthly: Data/ntl/  # a directory containing 12 monthly NTL rasters
+  ntl_annual: Data/ntl_annual/ntl_annual.tif  # a single averaged NTL raster
+  pop: Data/pop.tif  # a population raster
+  urban: Data/smod.tif  # raster showing urban extents
+  protected_areas: protected_areas/europe/
+  slope: slope/europe/
+
+outputs:
+  base: Data/  # base directory for all outputs
+  scratch: Data/scratch/  # directory for ephemeral outputs
+  targets: targets_filt/europe/pop1_lccs/  # this and the below are all relative to the base directory
+  costs: costs/europe/
+  costs_ext: costs_extended/europe/roads/
+  guess: mv/europe/
+  guess_ext: mv/europe/test/
+  vector: mv_vec/
+  pop_elec: pop_elec/
+  local: lv/
+  gt: ground_truth/europe/
+  gt_buff: ground_truth_buffered/europe
+  gt_vec: gt_vec/europe/
+
+options:
+  percentile: 70  # the percentile cutoff to use in averaging NTL rasters
+  ntl_threshold: 0.2  # value (after filtering) to consider as electrified
+  threads: 6  # number of processor threads to use
+
+costs:
+  costs_roads: costs_extended/europe/roads/
+  costs_protected_areas: costs_extended/europe/protected_areas/
+  costs_slope: costs_extended/europe/slope/
+  costs_hv: costs_extended/europe/hv/
+  r: 1 # Roads
+  pa: 0 # Protected Areas
+  s: 0 # Slope
+
+results:
+  dirname: Data/results/europe/test
